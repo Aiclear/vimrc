@@ -1,0 +1,78 @@
+let mapleader = ","
+let maplocalleader = "\\"
+
+echo "\t>^.^<"
+
+" Basic Setting ------------------------------ {{{
+set sw=4 ts=4 sts=4 et
+set smartindent
+set autoindent
+set number
+set nowrap
+set nocompatible
+set shiftround
+set ignorecase
+set foldlevelstart=0		" set marker
+set hlsearch
+set incsearch
+set guifont=mononoki\ 13        " Setting Gui fonts
+set guioptions-=m               " Toggle Menu and Toolbar
+set guioptions-=T
+filetype on
+" }}}
+
+" Vim mapping ---------------------- {{{
+nnoremap H 0
+nnoremap L $
+inoremap <C-U> <ESC>vbUA		         " set UpLetter
+inoremap <C-D> <ESC>ddi			         " delete line
+nnoremap <leader>va vi(
+nnoremap <leader>sm :source %<cr>
+nnoremap <leader>sw vawc
+nnoremap <silent><C-L> :<c-u>nohlsearch<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel   " add "
+vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>       " add '
+nnoremap <leader>vs :execute "leftabove vsplit " . bufname("#")<CR>
+nnoremap <leader>sp :execute "leftabove split " . bufname("#")<CR>
+nnoremap <silent><leader>w :match Error /\v^\ [^a-zA-Z0-9]*/<cr>
+nnoremap <silent><leader>W :match Error //<cr>
+"nnoremap <leader>g :silent execute "grep! -R " .  shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
+nnoremap <leader>cn :cNext<cr>
+nnoremap <leader>cp :cprevious<cr>
+nnoremap <leader>cl :clist<cr>
+nnoremap <leader>cw :cwindow<cr>
+nnoremap <leader>N :setlocal number!<cr>         " switch bool value
+" }}}
+
+" Iabbrev map setting -------------------------- {{{
+iabbrev mvo mov
+iabbrev operatro operator
+iabbrev endf endfunction
+" }}}
+
+" Vimscript file settings -------------------- {{{
+augroup filetype_html
+	autocmd!
+	autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+	autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+	autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
+	autocmd FileType python :iabbrev <buffer> iff if:<left>
+	autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" Vim statusline setting -------------------------- {{{
+" set statusline+=\ -\    " spilter
+" set statusline+=%.20F
+set ruler
+set laststatus=2
+set statusline=%f       	" file path
+set statusline+=%=              " let label to right
+set statusline+=FileType:	" Label
+set statusline+=%y		" FileType
+set statusline+=[%04l]          " line number
+set statusline+=/               " sp
+set statusline+=%L		" all line number
+" }}}
