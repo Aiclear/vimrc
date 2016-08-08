@@ -12,13 +12,14 @@ set nowrap
 set nocompatible
 set shiftround
 set ignorecase
-set foldlevelstart=0		" set marker
+set foldlevelstart=0		    " Set marker
 set hlsearch
 set incsearch
 set guifont=mononoki\ 13        " Setting Gui fonts
 set guioptions-=m               " Toggle Menu and Toolbar
 set guioptions-=T
-set guicursor=a:block-blinkon0
+set guicursor=a:block-blinkon0  " Setting cursor
+set cursorline
 filetype on
 " }}}
 
@@ -79,7 +80,7 @@ set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim
 "set statusline+=%L		" all line number
 " }}}
 
-" Vundle setting --------------------- {{{
+" Vundle and plugin setting --------------------- {{{
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -89,6 +90,22 @@ Bundle 'gmarik/vundle'
 
 Bundle 'scrooloose/nerdtree'
 Bundle 'powerline/powerline'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'Aiclear/potion'
 filetype plugin indent on
+
+" Vim colors setting(vim-colors-solarized) ------------------------- {{{
+set background=dark
+colorscheme solarized
+" }}}
+" NERDTree setting --------------------------- {{{
+noremap <F1> :NERDTreeToggle<cr>
+noremap <C-F1> :NERDTreeFind<cr>
+let NERDTreeChDirMode=2 " Select root dir set current dir
+let NERDTreeQuitOnOpen=1 " When open file close tree
+let NERDTreeShowBookmarks=1 " Show bookmarks
+let NERDTreeMinimalUI=1 " Don't show help menu
+let NERDTreeDirArrows=1 " 
+" }}}
+
 " }}}
