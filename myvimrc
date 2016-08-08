@@ -18,6 +18,7 @@ set incsearch
 set guifont=mononoki\ 13        " Setting Gui fonts
 set guioptions-=m               " Toggle Menu and Toolbar
 set guioptions-=T
+set guicursor=a:block-blinkon0
 filetype on
 " }}}
 
@@ -63,16 +64,31 @@ augroup filetype_html
 augroup END
 " }}}
 
-" Vim statusline setting -------------------------- {{{
-" set statusline+=\ -\    " spilter
-" set statusline+=%.20F
+" Vim statusline setting(powerline) -------------------------- {{{
 set ruler
 set laststatus=2
-set statusline=%f       	" file path
-set statusline+=%=              " let label to right
-set statusline+=FileType:	" Label
-set statusline+=%y		" FileType
-set statusline+=[%04l]          " line number
-set statusline+=/               " sp
-set statusline+=%L		" all line number
+set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim
+" set statusline+=\ -\    " spilter
+" set statusline+=%.20F
+"set statusline=%f       	" file path
+"set statusline+=%=              " let label to right
+"set statusline+=FileType:	" Label
+"set statusline+=%y		" FileType
+"set statusline+=[%04l]          " line number
+"set statusline+=/               " sp
+"set statusline+=%L		" all line number
+" }}}
+
+" Vundle setting --------------------- {{{
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" 使用Vundle管理插件，这个必须安装。
+Bundle 'gmarik/vundle'
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'powerline/powerline'
+Bundle 'Aiclear/potion'
+filetype plugin indent on
 " }}}
